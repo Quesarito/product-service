@@ -8,15 +8,28 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "nodemon --inspect ./server/index.js"
+    "start": "nodemon --inspect ./server/index.js",
+    "build": "webpack -d --watch"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "mongoose": "^5.4.0",
-    "nodemon": "^1.18.9"
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.9",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "webpack": "^4.28.0",
+    "webpack-cli": "^3.1.2"
   }
 }
