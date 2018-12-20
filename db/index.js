@@ -2,9 +2,8 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/product_db');
 
-// Import fake data
-const fakeData = require('./fake-data-generator').data;
-debugger;
+// // Import fake data
+// const fakeData = require('./fake-data-generator').data;
 
 // Product Schema definition
 const productSchema = new mongoose.Schema({
@@ -45,16 +44,11 @@ const productSchema = new mongoose.Schema({
 // Products model definition
 const Product = mongoose.model('Product', productSchema);
 
-Product.insertMany(fakeData)
-  .then(() => {
-    'Successfully inserted fake data from database!';
-    debugger;
-  })
-  .catch(() => {
-    console.log('Error inserting fake data from database index.js!!!');
-    debugger;
-  });
+// Uncomment only if populating database with fake data
+// Product.insertMany(fakeData)
+//   .then(() => console.log('Successfully inserted fake data from database!'))
+//   .catch((err) => console.log('Error inserting fake data from database index.js! ERROR: ', err));
 
-module.exports = {
-  Product
+module.exports = { 
+
 };
