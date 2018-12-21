@@ -1,9 +1,9 @@
 import React from 'react';
 import PictureIcon from './PictureIcon.jsx';
 
-const PictureList = ({ pictureURLs }) => (
+const PictureList = ({ pictureURLs, onHover }) => (
   <div>
-    { pictureURLs.map(pictureURL => <PictureIcon url={pictureURL} />) }
+    { pictureURLs.map((pictureURL, id) => <PictureIcon url={pictureURL} onHover={onHover} id={id} />) }
   </div>
 );
 

@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost/product_db');
 const productSchema = new mongoose.Schema({
   id: {
     type: Number,
-    unique: true
+    unique: true,
   },
   name: String,
   description: String,
@@ -37,7 +37,7 @@ const productSchema = new mongoose.Schema({
   total_reviews: Number,
 
   // Number of answered questions about the product
-  answered_questions: Number // Eventually fetched from /questions API
+  answered_questions: Number, // Eventually fetched from /questions API
 });
 
 
@@ -49,6 +49,4 @@ const Product = mongoose.model('Product', productSchema);
 //   .then(() => console.log('Successfully inserted fake data from database!'))
 //   .catch((err) => console.log('Error inserting fake data from database index.js! ERROR: ', err));
 
-module.exports = { 
-
-};
+module.exports = {};

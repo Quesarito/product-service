@@ -59,6 +59,8 @@ for (let i = 0; i < 100; i += 1) {
   data.push(newProductDocument(i));
 }
 
+console.log(data[0]);
+
 module.exports = {
   data,
 };
