@@ -1,6 +1,9 @@
 import React from 'react';
 import PicturesView from './PicturesView.jsx';
+import TitleView from './TitleView.jsx';
 import ReviewsView from './ReviewsView.jsx';
+import PriceView from './PriceView.jsx';
+import DescriptionView from './DescriptionView.jsx';
 import exampleData from '../exampleData.js';
 
 const redBorder = {
@@ -16,6 +19,7 @@ class Product extends React.Component {
       id: exampleData.id,
       name: exampleData.name,
       description: exampleData.description,
+      seller: exampleData.seller,
       prime_eligible: exampleData.prime_eligible,
       versions: exampleData.versions,
       image_urls: exampleData.image_urls,
@@ -44,18 +48,23 @@ class Product extends React.Component {
         <div style={Object.assign(Object.assign({}, picturesViewStyle), redBorder)}>
           <PicturesView pictureURLs={this.state.image_urls} />
         </div>
-        <div style={{display: 'inline-block'}}>
-          <h1>{this.state.name}</h1>
-          <ReviewsView
-            one={this.state.one_star_reviews}
-            two={this.state.two_star_reviews}
-            three={this.state.three_star_reviews}
-            four={this.state.four_star_reviews}
-            five={this.state.five_star_reviews}
-            total={this.state.total_reviews} />
+        <div style={{fontFamily: '"Amazon Ember", Arial, sans-serif'}} >
+          <div style={{display: 'inline-block'}}>
+            <TitleView title={this.state.name} seller={this.state.seller} />
+            <ReviewsView
+              one={this.state.one_star_reviews}
+              two={this.state.two_star_reviews}
+              three={this.state.three_star_reviews}
+              four={this.state.four_star_reviews}
+              five={this.state.five_star_reviews}
+              total={this.state.total_reviews}
+              answered_questions={this.state.answered_questions} />
+            <div style={{borderBottomWidth: 1, borderBottomColor: 'gray', borderBottomStyle: 'solid'}}></div>
+          </div>
+          <PriceView price={this.state.versions.new.price} />
+          <DescriptionView description={this.state.description} />
+          <div style={{borderBottomWidth: 1, borderBottomColor: 'gray', borderBottomStyle: 'solid'}}></div>
         </div>
-        <p>Price: ${this.state.versions.new.price}</p>
-        <p>{this.state.description}</p> 
       </div>
     );
   }
