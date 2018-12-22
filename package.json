@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "nodemon --inspect ./server/index.js",
-    "build": "webpack -d --watch"
+    "build": "webpack -d --watch",
+    "seed-db": "node db/seedScript.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
