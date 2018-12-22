@@ -1,27 +1,32 @@
 // Import fake data npm module
 const faker = require('faker');
 
+// Import products images urls (array of arrays with URLs)
+const { productImageURLs } = require('./productImageURLs.js');
+
 // Get a random number of image urls from faker
 const getImgUrls = () => {
-  const numImg = Math.random() * 10 + 1;
-  const images = [];
-
-  for (let i = 0; i < numImg; i += 1) {
-    images.push(faker.image.image());
-  }
-  return images;
+  const rand = Math.floor(Math.random() * productImageURLs.length);
+  return productImageURLs[rand];
 };
 
 // Get a random amount of description from faker
 const getDescription = () => {
-  const rand = Math.floor(Math.random() * 10);
-  const text = [];
+  const rand = Math.floor(Math.random() * 7);
+  const paragraphs = [];
 
   for (let i = 0; i < rand; i += 1) {
-    text.push(faker.lorem.paragraphs());
+    paragraphs.push(faker.lorem.paragraphs());
   }
-  return text.join('');
+  return paragraphs;
 };
+
+const getRandomBool = () => Math.floor(Math.random() * 10) > 4;
+const getRandomQty = () => Math.floor(Math.random() * 25);
+const getRandomPrice = () => faker.commerce.price();
+const getRandomReviewQty = () => Math.floor(Math.random() * Math.random() * 100);
+const getRandomAnswerQty = () => Math.floor(Math.random() * 250);
+const getFutureDate = () => faker.date.future().toString();
 
 // Produce a new product document with all fields
 const newProductDocument = id => ({
@@ -29,38 +34,36 @@ const newProductDocument = id => ({
   name: faker.commerce.productName(),
   description: getDescription(),
   seller: faker.company.companyName(),
-  prime_eligible: Math.floor(Math.random() * 10) > 4,
+  prime_eligible: getRandomBool(),
   versions: {
     new: {
-      qty_in_stock: Math.floor(Math.random() * 25),
-      price: Math.floor(Math.random() * 1000),
+      qty_in_stock: getRandomQty(),
+      price: getRandomPrice(),
     },
     old: {
-      qty_in_stock: Math.floor(Math.random() * 25),
-      price: Math.floor(Math.random() * 1000),
+      qty_in_stock: getRandomQty(),
+      price: getRandomPrice(),
     },
   },
   image_urls: getImgUrls(),
-  expected_date_of_arrival: faker.date.future().toString(),
+  expected_date_of_arrival: getFutureDate(),
 
-  five_star_reviews: Math.floor(Math.random() * Math.random() * 100),
-  four_star_reviews: Math.floor(Math.random() * Math.random() * 100),
-  three_star_reviews: Math.floor(Math.random() * Math.random() * 100),
-  two_star_reviews: Math.floor(Math.random() * Math.random() * 100),
-  one_star_reviews: Math.floor(Math.random() * Math.random() * 100),
-  total_reviews: Math.floor(Math.random() * 4882),
+  five_star_reviews: getRandomReviewQty(),
+  four_star_reviews: getRandomReviewQty(),
+  three_star_reviews: getRandomReviewQty(),
+  two_star_reviews: getRandomReviewQty(),
+  one_star_reviews: getRandomReviewQty(),
+  total_reviews: getRandomReviewQty(),
 
-  answered_questions: Math.floor(Math.random() * 1000),
+  answered_questions: getRandomAnswerQty(),
 });
 
 // Randomly generated data that will be exported with 100 products
-const data = [];
+const fakeData = [];
 for (let i = 0; i < 100; i += 1) {
-  data.push(newProductDocument(i));
+  fakeData.push(newProductDocument(i));
 }
 
-console.log(data[0]);
-
 module.exports = {
-  data,
+  fakeData,
 };
