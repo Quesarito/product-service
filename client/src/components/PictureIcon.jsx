@@ -6,9 +6,14 @@ const iconStyle = {
   paddingBottom: 7,
 };
 
-const PictureIcon = ({ url, onHover, id }) => (
+const selectedStyle = {
+  outlineStyle: 'solid',
+  outlineColor: 'red',
+};
+
+const PictureIcon = ({ url, onHover, id, idSelected }) => (
   <div>
-    <img style={iconStyle} src={url} onMouseOver={onHover} id={id} ></img>
+    <img style={id === idSelected ? Object.assign({}, iconStyle, selectedStyle) : iconStyle} src={url} onMouseOver={onHover} id={id} ></img>
   </div>
 );
 

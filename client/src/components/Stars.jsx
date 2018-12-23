@@ -1,15 +1,17 @@
 import React from 'react';
+import RatingsGraphic from './RatingsGraphic.jsx';
 
-const Stars = ({ one, two, three, four, five }) => {
-  return (
-    <div>
-      <p>One star reviews {one}</p>
-      <p>Two star reviews {two}</p>
-      <p>Three star reviews {three}</p>
-      <p>Four star reviews {four}</p>
-      <p>Five star reviews {five}</p>
-    </div>
-  );
+const starsStyle = {float: 'left', backgroundColor: 'yellow'};
+
+const Stars = ({ one, two, three, four, five, hovered, onMouseLeaveHandler, onMouseOverHandler }) => {
+  return hovered ? 
+    (<div onMouseLeave={onMouseLeaveHandler}>
+      <RatingsGraphic one={one} two={two} three={three} four={four} five={five} />
+    </div>)
+    :
+    (<div onMouseOver={onMouseOverHandler} style={starsStyle}>
+      &#9734;&#9734;&#9734;&#9734;&#9734; &or; &nbsp;&nbsp;
+    </div>)
 };
 
 export default Stars;
