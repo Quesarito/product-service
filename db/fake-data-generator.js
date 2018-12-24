@@ -4,7 +4,7 @@ const faker = require('faker');
 // Import products images urls (array of arrays with URLs)
 const { productImageURLs } = require('./productImageURLs.js');
 
-// Get a random number of image urls from faker
+// Get a random number of image urls from imported image urls
 const getImgUrls = () => {
   const rand = Math.floor(Math.random() * productImageURLs.length);
   return productImageURLs[rand];
@@ -58,7 +58,7 @@ const newProductDocument = id => ({
   answered_questions: getRandomAnswerQty(),
 });
 
-// Randomly generated data that will be exported with 100 products
+// Randomly generated data array with 100 products
 const fakeData = [];
 for (let i = 0; i < 100; i += 1) {
   fakeData.push(newProductDocument(i));

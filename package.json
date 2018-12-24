@@ -1,7 +1,7 @@
 {
   "name": "product-view-service-component",
   "version": "1.0.0",
-  "description": "This will render the product view component for our Amazon.com-like web app.",
+  "description": "This will render the product view and photo gallery component for our Amazon.com-like web app.",
   "author": "JJ Velez",
   "license": "",
   "engines": {
@@ -10,7 +10,7 @@
   "scripts": {
     "start": "nodemon --inspect ./server/index.js",
     "build": "webpack -d --watch",
-    "seed-db": "node db/seedScript.js"
+    "seed": "node db/seedScript.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",

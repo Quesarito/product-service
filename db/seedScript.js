@@ -43,6 +43,7 @@ const productSchema = new mongoose.Schema({
 // Products model definition
 const Product = mongoose.model('Product', productSchema);
 
+// Insert all fake data (100 products) into database
 Product.insertMany(fakeData)
   .then(() => console.log('Successfully inserted fake data from database!'))
   .catch(err => console.log('Error inserting fake data from database index.js! ERROR: ', err));
