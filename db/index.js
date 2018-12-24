@@ -2,9 +2,6 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/product_db');
 
-// // Import fake data
-// const fakeData = require('./fake-data-generator').data;
-
 // Product Schema definition
 const productSchema = new mongoose.Schema({
   id: {
@@ -29,7 +26,7 @@ const productSchema = new mongoose.Schema({
   expected_date_of_arrival: String,
 
   // Number of reviews for each star:
-  five_star_reviews: Number,  // Eventually fetched from /reviews API
+  five_star_reviews: Number, // Eventually fetched from /reviews API
   four_star_reviews: Number,
   three_star_reviews: Number,
   two_star_reviews: Number,
@@ -40,13 +37,11 @@ const productSchema = new mongoose.Schema({
   answered_questions: Number, // Eventually fetched from /questions API
 });
 
-
 // Products model definition
 const Product = mongoose.model('Product', productSchema);
 
-// Uncomment only if populating database with fake data
-// Product.insertMany(fakeData)
-//   .then(() => console.log('Successfully inserted fake data from database!'))
-//   .catch((err) => console.log('Error inserting fake data from database index.js! ERROR: ', err));
+const find = conditions => Product.find(conditions);
 
-module.exports = {};
+module.exports = {
+  find,
+};
