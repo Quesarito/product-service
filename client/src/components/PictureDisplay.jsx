@@ -1,19 +1,22 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const PictureDisplay = ({ pictureURL, numPictures }) => {
-  let pictureDisplayStyle = {
-    marginLeft: 50, 
-    height: 'auto',
-    float: 'left',
-    width: 540,
-    marginTop: -1 * numPictures * 60 + 80,
-  };
+  const Picture = styled.div`
+    img {
+      margin-left: 50px; 
+      height: 500px;
+      float: left;
+      width: auto;
+      margin-top: calc(-1 * ${numPictures} * 60px + 30px);
+    }
+  `;
 
   return (
-    <div>
-      <img style={pictureDisplayStyle} src={ pictureURL }></img>
+    <Picture>
+      <img src={ pictureURL }></img>
       Roll over image to zoom in
-    </div>
+    </Picture>
   );
 };
 

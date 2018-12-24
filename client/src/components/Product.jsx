@@ -5,12 +5,25 @@ import ReviewsView from './ReviewsView.jsx';
 import PriceView from './PriceView.jsx';
 import DescriptionView from './DescriptionView.jsx';
 import exampleData from '../exampleData.js';
+import styled from 'styled-components';
 
-const redBorder = {
-  borderColor: 'red',
-  borderStyle: 'solid', 
-  borderWidth: 1,
-};
+const App = styled.div`
+  font-family: Roboto, Arial, sans-serif;
+  .red-border {
+    border-color: red;
+    border-style: solid; 
+    border-width: 1px;
+  }
+  .pictures-section {
+    width: 600px;
+    height: 600px; 
+    left: 0px; 
+    float: left;
+  }
+  .line {
+    border-bottom: 1px gray solid;
+  }
+`;
 
 class Product extends React.Component {
   constructor(props) {
@@ -32,23 +45,18 @@ class Product extends React.Component {
       total_reviews: exampleData.total_reviews,
       answered_questions: exampleData.answered_questions,
     };
+    // This changes the title of the page (title in the browser tab) to:
+    // Amazon.com: Whatever product name
+    document.title = `Amazon.com: ${exampleData.name}`;
   }
 
-
   render() {
-    const picturesViewStyle = {
-      width: 600,
-      height: 600, 
-      left: 0, 
-      float: 'left',
-    };
-
     return (
-      <div>
-        <div style={Object.assign(Object.assign({}, picturesViewStyle), redBorder)}>
+      <App>
+        <div className="pictures-section red-border">
           <PicturesView pictureURLs={this.state.image_urls} />
         </div>
-        <div style={{fontFamily: '"Amazon Ember", Arial, sans-serif'}} >
+        <div>
           <div style={{display: 'inline-block'}}>
             <TitleView title={this.state.name} seller={this.state.seller} />
             <ReviewsView
@@ -59,13 +67,13 @@ class Product extends React.Component {
               five={this.state.five_star_reviews}
               total={this.state.total_reviews}
               answered_questions={this.state.answered_questions} />
-            <div style={{borderBottomWidth: 1, borderBottomColor: 'gray', borderBottomStyle: 'solid'}}></div>
+            <div className="line"></div>
           </div>
           <PriceView price={this.state.versions.new.price} />
           <DescriptionView description={this.state.description} />
-          <div style={{borderBottomWidth: 1, borderBottomColor: 'gray', borderBottomStyle: 'solid'}}></div>
+          <div className="line"></div>
         </div>
-      </div>
+      </App>
     );
   }
 }

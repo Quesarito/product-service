@@ -1,20 +1,22 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const iconStyle = {
-  height: 40,
-  width: 40,
-  paddingBottom: 7,
-};
-
-const selectedStyle = {
-  outlineStyle: 'solid',
-  outlineColor: 'red',
-};
+const Icon = styled.div`
+  img {
+    height: 40px;
+    width: 40px;
+    padding-bottom: 7px;
+  }
+  .displayed {
+    outline-style: solid;
+    outline-color: red;
+  }
+`;
 
 const PictureIcon = ({ url, onHover, id, idSelected }) => (
-  <div>
-    <img style={id === idSelected ? Object.assign({}, iconStyle, selectedStyle) : iconStyle} src={url} onMouseOver={onHover} id={id} ></img>
-  </div>
+  <Icon>
+    <img className={id === idSelected ? 'displayed' : ''} src={url} onMouseOver={onHover} id={id} ></img>
+  </Icon>
 );
 
 export default PictureIcon;
