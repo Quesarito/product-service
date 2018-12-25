@@ -29,7 +29,7 @@ const PriceView = ({ price, prime }) => (
   <Price>
     <Gray>Price:</Gray>
     <Red>${price}</Red>
-    &nbsp;{true ? <img style={primeStyle} src={primeImgURL}></img> : ''}
+    &nbsp;{prime ? <img style={primeStyle} src={primeImgURL}></img> : ''}
   </Price>
 );
 
