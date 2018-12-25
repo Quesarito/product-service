@@ -2,27 +2,25 @@ import React from 'react';
 import PicturesView from './PicturesView.jsx';
 import TitleView from './TitleView.jsx';
 import ReviewsView from './ReviewsView.jsx';
-import PriceView from './PriceView.jsx';
 import DescriptionView from './DescriptionView.jsx';
 import exampleData from '../exampleData.js';
 import styled from 'styled-components';
 
 const App = styled.div`
   font-family: Roboto, Arial, sans-serif;
-  .red-border {
-    border-color: red;
-    border-style: solid; 
-    border-width: 1px;
-  }
-  .pictures-section {
-    width: 600px;
-    height: 600px; 
-    left: 0px; 
-    float: left;
-  }
-  .line {
-    border-bottom: 1px gray solid;
-  }
+`;
+
+const PicturesSection = styled.div`
+  width: 550px;
+  height: 600px; 
+  left: 0px; 
+  float: left;
+`;
+
+const ContentSection = styled.div`
+  display: 'inline-block';
+  margin-left: 550px;
+  margin-right: 200px;
 `;
 
 class Product extends React.Component {
@@ -46,33 +44,34 @@ class Product extends React.Component {
       answered_questions: exampleData.answered_questions,
     };
     // This changes the title of the page (title in the browser tab) to:
-    // Amazon.com: Whatever product name
+    // Amazon.com: Product name
     document.title = `Amazon.com: ${exampleData.name}`;
   }
 
   render() {
     return (
       <App>
-        <div className="pictures-section red-border">
+
+        <PicturesSection>
           <PicturesView pictureURLs={this.state.image_urls} />
-        </div>
-        <div>
-          <div style={{display: 'inline-block'}}>
-            <TitleView title={this.state.name} seller={this.state.seller} />
-            <ReviewsView
-              one={this.state.one_star_reviews}
-              two={this.state.two_star_reviews}
-              three={this.state.three_star_reviews}
-              four={this.state.four_star_reviews}
-              five={this.state.five_star_reviews}
-              total={this.state.total_reviews}
-              answered_questions={this.state.answered_questions} />
-            <div className="line"></div>
-          </div>
-          <PriceView price={this.state.versions.new.price} />
-          <DescriptionView description={this.state.description} />
-          <div className="line"></div>
-        </div>
+        </PicturesSection>
+
+        <ContentSection>
+          <TitleView title={this.state.name} seller={this.state.seller} />
+          <ReviewsView
+            one={this.state.one_star_reviews}
+            two={this.state.two_star_reviews}
+            three={this.state.three_star_reviews}
+            four={this.state.four_star_reviews}
+            five={this.state.five_star_reviews}
+            total={this.state.total_reviews}
+            answered_questions={this.state.answered_questions} />
+          <DescriptionView 
+            price={this.state.versions.new.price} 
+            prime={this.state.prime_eligible} 
+            description={this.state.description} />
+        </ContentSection>
+
       </App>
     );
   }

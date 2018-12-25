@@ -1,17 +1,22 @@
 import React from 'react';
 import PictureIcon from './PictureIcon.jsx';
+import styled from 'styled-components';
+
+const LeftAlign = styled.div`
+  left: 0;
+`;
 
 const PictureList = ({ pictureURLs, onHover, idSelected }) => (
-  <div>
+  <LeftAlign>
     { pictureURLs.map((pictureURL, id) => {
       return (<PictureIcon 
         url={pictureURL} 
         onHover={onHover} 
         id={id} 
-        idSelected={idSelected} />)
+        idSelected={idSelected} />);
       })
     }
-  </div>
+  </LeftAlign>
 );
 
 export default PictureList;

@@ -5,11 +5,13 @@ const Icon = styled.div`
   img {
     height: 40px;
     width: 40px;
-    padding-bottom: 7px;
+    margin-bottom: 6.5px;
+    border: 1px rgba(0, 0, 0, 0.3) solid;
+    border-radius: 2px;
   }
-  .displayed {
-    outline-style: solid;
-    outline-color: red;
+  .displayed { 
+    border: 1px rgb(245, 120, 0) solid;
+    box-shadow: 1px 1px 3px 2px rgba(177, 39, 4, 0.2);
   }
 `;
 

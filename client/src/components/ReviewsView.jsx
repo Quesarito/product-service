@@ -1,5 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 import Stars from './Stars.jsx';
+import GrayLine from './GrayLine.jsx';
+import Link from './Link.jsx';
+
+const SmallFont = styled.div`
+  font-size: 13px;
+  line-height: 1.46;
+`;
 
 class ReviewsView extends React.Component {
   constructor(props) {
@@ -26,7 +34,7 @@ class ReviewsView extends React.Component {
 
   render() {
     return (
-      <div>
+      <SmallFont>
         <Stars 
           one={this.state.one} 
           two={this.state.two} 
@@ -36,8 +44,9 @@ class ReviewsView extends React.Component {
           hovered={this.state.hovered} 
           onMouseOverHandler={this.onMouseOverHandler.bind(this)} 
           onMouseLeaveHandler={this.onMouseLeaveHandler.bind(this)} />
-        <p>{this.state.total} customer reviews | {this.state.answered_questions} answered questions</p>
-      </div>
+        <Link>{this.state.total} customer reviews</Link> | <Link>{this.state.answered_questions} answered questions</Link>
+        <GrayLine></GrayLine>
+      </SmallFont>
     );
   }
 }

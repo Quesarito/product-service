@@ -8,6 +8,7 @@ class PicturesView extends React.Component {
     this.state = {
       pictures: props.pictureURLs,
       current: props.pictureURLs[0],
+      // idSelected is the ID of the large image that is currently displayed
       idSelected: 0,
     }
   }
@@ -23,15 +24,11 @@ class PicturesView extends React.Component {
   render() {
     return (
       <div>
-        <div style={{left: 0}}>
-          <PictureList 
-            pictureURLs={this.state.pictures} 
-            onHover={this.onIconHoverHandler.bind(this)}
-            idSelected={this.state.idSelected} />
-        </div>
-        <div>
-          <PictureDisplay pictureURL={this.state.current} numPictures={this.state.pictures.length} />
-        </div>
+        <PictureList 
+          pictureURLs={this.state.pictures} 
+          onHover={this.onIconHoverHandler.bind(this)}
+          idSelected={this.state.idSelected} />
+        <PictureDisplay pictureURL={this.state.current} numPictures={this.state.pictures.length} />
       </div>
     );
   }
