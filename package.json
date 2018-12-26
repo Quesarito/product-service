@@ -10,7 +10,8 @@
   "scripts": {
     "start": "nodemon --inspect ./server/index.js",
     "build": "webpack -d --watch",
-    "seed": "node db/seedScript.js"
+    "seed": "node db/seedScript.js",
+    "test": "jest tests/"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -29,9 +30,12 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-styled-components": "^1.10.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "^5.10.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "jest": "^23.6.0",
     "webpack": "^4.28.0",
     "webpack-cli": "^3.1.2"
   }
