@@ -11,6 +11,7 @@ class PicturesView extends React.Component {
       // idSelected is the ID of the large image that is currently displayed
       idSelected: 0,
     }
+    this.onIconHoverHandler = this.onIconHoverHandler.bind(this);
   }
 
   onIconHoverHandler(event) {
@@ -26,7 +27,7 @@ class PicturesView extends React.Component {
       <div>
         <PictureList 
           pictureURLs={this.state.pictures} 
-          onHover={this.onIconHoverHandler.bind(this)}
+          onHover={this.onIconHoverHandler}
           idSelected={this.state.idSelected} />
         <PictureDisplay pictureURL={this.state.current} numPictures={this.state.pictures.length} />
       </div>
