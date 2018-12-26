@@ -57,9 +57,7 @@ const FirstRow = styled.div`
 `;
 
 const LastLink = styled(Link)`
-  position: absolute; 
   font-size: 12px;
-  border-top: 12px solid rgba(0, 0, 0, 0);
 `;
 
 const RatingsGraphic = ({ one, two, three, four, five }) => {
