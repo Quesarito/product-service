@@ -2,15 +2,26 @@ import React from 'react';
 import PicturesView from './PicturesView.jsx';
 import TitleView from './TitleView.jsx';
 import ReviewsView from './ReviewsView.jsx';
-import PriceView from './PriceView.jsx';
 import DescriptionView from './DescriptionView.jsx';
 import exampleData from '../exampleData.js';
+import styled from 'styled-components';
 
-const redBorder = {
-  borderColor: 'red',
-  borderStyle: 'solid', 
-  borderWidth: 1,
-};
+const App = styled.div`
+  font-family: Roboto, Arial, sans-serif;
+`;
+
+const PicturesSection = styled.div`
+  width: 550px;
+  height: 600px; 
+  left: 0px; 
+  float: left;
+`;
+
+const ContentSection = styled.div`
+  display: 'inline-block';
+  margin-left: 550px;
+  margin-right: 200px;
+`;
 
 class Product extends React.Component {
   constructor(props) {
@@ -32,40 +43,36 @@ class Product extends React.Component {
       total_reviews: exampleData.total_reviews,
       answered_questions: exampleData.answered_questions,
     };
+    // This changes the title of the page (title in the browser tab) to:
+    // Amazon.com: Product name
+    document.title = `Amazon.com: ${exampleData.name}`;
   }
 
-
   render() {
-    const picturesViewStyle = {
-      width: 600,
-      height: 600, 
-      left: 0, 
-      float: 'left',
-    };
-
     return (
-      <div>
-        <div style={Object.assign(Object.assign({}, picturesViewStyle), redBorder)}>
+      <App>
+
+        <PicturesSection>
           <PicturesView pictureURLs={this.state.image_urls} />
-        </div>
-        <div style={{fontFamily: '"Amazon Ember", Arial, sans-serif'}} >
-          <div style={{display: 'inline-block'}}>
-            <TitleView title={this.state.name} seller={this.state.seller} />
-            <ReviewsView
-              one={this.state.one_star_reviews}
-              two={this.state.two_star_reviews}
-              three={this.state.three_star_reviews}
-              four={this.state.four_star_reviews}
-              five={this.state.five_star_reviews}
-              total={this.state.total_reviews}
-              answered_questions={this.state.answered_questions} />
-            <div style={{borderBottomWidth: 1, borderBottomColor: 'gray', borderBottomStyle: 'solid'}}></div>
-          </div>
-          <PriceView price={this.state.versions.new.price} />
-          <DescriptionView description={this.state.description} />
-          <div style={{borderBottomWidth: 1, borderBottomColor: 'gray', borderBottomStyle: 'solid'}}></div>
-        </div>
-      </div>
+        </PicturesSection>
+
+        <ContentSection>
+          <TitleView title={this.state.name} seller={this.state.seller} />
+          <ReviewsView
+            one={this.state.one_star_reviews}
+            two={this.state.two_star_reviews}
+            three={this.state.three_star_reviews}
+            four={this.state.four_star_reviews}
+            five={this.state.five_star_reviews}
+            total={this.state.total_reviews}
+            answered_questions={this.state.answered_questions} />
+          <DescriptionView 
+            price={this.state.versions.new.price} 
+            prime={this.state.prime_eligible} 
+            description={this.state.description} />
+        </ContentSection>
+
+      </App>
     );
   }
 }
