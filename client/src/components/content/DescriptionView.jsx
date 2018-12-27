@@ -4,7 +4,7 @@ import PriceView from './PriceView.jsx';
 import GrayLine from '../styledComponents/GrayLine.jsx';
 
 const Description = styled.div`
-font-size: 13px;
+  font-size: 13px;
 `;
 
 const Paragraph = ({ paragraph }) => (<p>{ paragraph }</p>);
