@@ -31,13 +31,13 @@ const fraction = (amount, total) => (amount / total * 120).toFixed(1).toString()
 
 const RatingsBar = ({ amount, total }) => {
   const fill = keyframes`
-  from {
-    width: 0px;
-  }
-  to {
-    width: ${ fraction(amount, total) };
-  }
-`;
+    from {
+      width: 0px;
+    }
+    to {
+      width: ${ fraction(amount, total) };
+    }
+  `;
 
   const FractionFilledBar = styled(FillingBar)`
     animation: ${fill} 0.5s linear;
