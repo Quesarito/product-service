@@ -12,10 +12,6 @@ const Star = styled.span`
   padding-right: 67px;
 `;
 
-const starsStyle = {
-  background: 'yellow',
-};
-
 const getDifference = weighted => Number(weighted) - Math.floor(Number(weighted));
 const toPixel = shift => shift.toString() + 'px';
 
