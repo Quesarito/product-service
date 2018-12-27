@@ -9,6 +9,10 @@ const SmallFont = styled.div`
   line-height: 1.46;
 `;
 
+const LeftPaddedLink = styled(Link)`
+  padding-left: 15px;
+`;
+
 class ReviewsView extends React.Component {
   constructor(props) {
     super(props);
@@ -48,7 +52,7 @@ class ReviewsView extends React.Component {
           hovered={this.state.hovered} 
           onMouseOver={this.onMouseOverHandler} 
           onMouseLeave={this.onMouseLeaveHandler} />
-        <Link>{this.state.total} customer reviews</Link> | <Link>{this.state.answered_questions} answered questions</Link>
+        <LeftPaddedLink>{this.state.total} customer reviews</LeftPaddedLink> | <Link>{this.state.answered_questions} answered questions</Link>
         <GrayLine></GrayLine>
       </SmallFont>
     );
