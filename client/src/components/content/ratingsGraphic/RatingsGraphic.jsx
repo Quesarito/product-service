@@ -4,7 +4,7 @@ import RatingsRow from './RatingsRow.jsx';
 import Link from '../../styledComponents/Link.jsx';
 
 const weighted = (one, two, three, four, five, total) => {
-  let weightedAvg = (one * 1 + two * 2 + three * 3 + four * 4 + five * 5) / (total * 5);
+  let weightedAvg = (one * 1 + two * 2 + three * 3 + four * 4 + five * 5) / total;
   return weightedAvg.toFixed(1);
 };
 

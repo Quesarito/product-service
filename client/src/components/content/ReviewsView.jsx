@@ -31,7 +31,9 @@ class ReviewsView extends React.Component {
   }
 
   onMouseOverHandler() {
-    this.setState({ hovered: true });
+    if (this.state.hovered === false) {
+      this.setState({ hovered: true });
+    }
   }
 
   render() {

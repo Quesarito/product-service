@@ -27,7 +27,7 @@ const Percentage = ({ percent }) => {
 const RatingsRow = ({ starNum, amount, total }) => {
   return (
     <Row>
-      <RowLink>{starNum} star</RowLink> 
+      <RowLink>{starNum} star</RowLink> &nbsp;&nbsp;
       <RatingsBar amount={amount} total={total} />
       <Percentage percent={ getPercentageString(amount, total) } />
     </Row>
