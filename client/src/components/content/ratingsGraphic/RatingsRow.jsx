@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Link from './Link.jsx';
+import Link from '../../styledComponents/Link.jsx';
 import RatingsBar from './RatingsBar.jsx';
 
 const Row = styled.div`

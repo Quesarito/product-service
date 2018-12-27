@@ -1,8 +1,8 @@
 import React from 'react';
-import PicturesView from './PicturesView.jsx';
-import TitleView from './TitleView.jsx';
-import ReviewsView from './ReviewsView.jsx';
-import DescriptionView from './DescriptionView.jsx';
+import PicturesView from './picture/PicturesView.jsx';
+import TitleView from './content/TitleView.jsx';
+import ReviewsView from './content/ReviewsView.jsx';
+import DescriptionView from './content/DescriptionView.jsx';
 import exampleData from '../exampleData.js';
 import styled from 'styled-components';
 

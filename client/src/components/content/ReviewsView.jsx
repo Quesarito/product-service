@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import StarsButton from './StarsButton.jsx';
-import GrayLine from './GrayLine.jsx';
-import Link from './Link.jsx';
+import GrayLine from '../styledComponents/GrayLine.jsx';
+import Link from '../styledComponents/Link.jsx';
 
 const SmallFont = styled.div`
   font-size: 13px;

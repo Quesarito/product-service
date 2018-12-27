@@ -1,6 +1,6 @@
 import React from 'react';
 import Stars from './Stars.jsx';
-import RatingsGraphic from './RatingsGraphic.jsx';
+import RatingsGraphic from './ratingsGraphic/RatingsGraphic.jsx';
 
 const floatLeft = {
   float: 'left',
