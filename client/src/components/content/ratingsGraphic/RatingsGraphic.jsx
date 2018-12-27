@@ -3,11 +3,6 @@ import styled from 'styled-components';
 import RatingsRow from './RatingsRow.jsx';
 import Link from '../../styledComponents/Link.jsx';
 
-const weighted = (one, two, three, four, five, total) => {
-  let weightedAvg = (one * 1 + two * 2 + three * 3 + four * 4 + five * 5) / total;
-  return weightedAvg.toFixed(1);
-};
-
 const CSSTriangle = styled.span`
   z-index: 3;
   background: rgba(0, 0, 0, 0);
@@ -36,7 +31,7 @@ const Box = styled.div`
   color: rgb(83, 83, 83);
   z-index: 1;
   float: left;
-  margin-left: -58px;
+  margin-left: -70px;
   margin-top: 7px;
   position: absolute;
   height: 193px;
@@ -60,7 +55,7 @@ const LastLink = styled(Link)`
   font-size: 12px;
 `;
 
-const RatingsGraphic = ({ one, two, three, four, five }) => {
+const RatingsGraphic = ({ one, two, three, four, five, weighted }) => {
   const total = one + two + three + four + five;
   const ratings = [[5, five], [4, four], [3, three], [2, two], [1, one]];
 
@@ -70,7 +65,7 @@ const RatingsGraphic = ({ one, two, three, four, five }) => {
       
       <CenterAlign>
         <FirstRow> 
-          { weighted(one, two, three, four, five, total) } out of 5 stars 
+          { weighted } out of 5 stars 
         </FirstRow>
         { ratings.map(rating => <RatingsRow starNum={rating[0]} amount={rating[1]} total={total} />)}
         <LastLink>See all {total} reviews ></LastLink>
