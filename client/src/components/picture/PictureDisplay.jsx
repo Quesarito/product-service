@@ -18,21 +18,32 @@ const PrePicture = styled.div`
   }
 `;
 
-const PictureDisplay = ({ pictureURL, numPictures }) => {
-  // the Picture styled component is inside of this PictureDisplay component
-  // because if the entire set of pictures changes (e.g. a new product itself
-  // is rendered), then the number of pictures may not be the same, and we want
-  // for the PictureDisplay to be well aligned with the PictureList and Title 
-  const Picture = styled(PrePicture)`
-    margin-top: calc(-1 * ${numPictures} * 47.5px);
-  `;
+class PictureDisplay extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onImageHover = this.onImageHover.bind(this);
+  }
 
-  return (
-    <Picture>
-      <img src={ pictureURL }></img>
-      <Caption>Roll over image to zoom in</Caption>
-    </Picture>
-  );
-};
+  onImageHover() {
+    console.log('hovered');
+  }
+
+  render() {
+    // the Picture styled component is inside of this PictureDisplay component
+    // because if the entire set of pictures changes (e.g. a new product is
+    // is rendered), then the number of pictures may not be the same, and we want
+    // for the PictureDisplay to be well aligned with the PictureList and Title
+    const Picture = styled(PrePicture)`
+      margin-top: calc(-1 * ${ this.props.numPictures } * 47.5px);
+    `;
+
+    return (
+      <Picture>
+        <img onMouseOver={ this.onImageHover } src={ this.props.pictureURL }></img>
+        <Caption>Roll over image to zoom in</Caption>
+      </Picture>
+    );
+  }
+}
 
 export default PictureDisplay;
