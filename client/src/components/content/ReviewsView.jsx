@@ -1,12 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import Stars from './Stars.jsx';
-import GrayLine from './GrayLine.jsx';
-import Link from './Link.jsx';
+import StarsButton from './StarsButton.jsx';
+import GrayLine from '../styledComponents/GrayLine.jsx';
+import Link from '../styledComponents/Link.jsx';
 
 const SmallFont = styled.div`
   font-size: 13px;
   line-height: 1.46;
+`;
+
+const LeftPaddedLink = styled(Link)`
+  padding-left: 15px;
 `;
 
 class ReviewsView extends React.Component {
@@ -22,6 +26,8 @@ class ReviewsView extends React.Component {
       answered_questions: props.answered_questions,
       hovered: false,
     };
+    this.onMouseLeaveHandler = this.onMouseLeaveHandler.bind(this);
+    this.onMouseOverHandler = this.onMouseOverHandler.bind(this)
   }
 
   onMouseLeaveHandler() {
@@ -29,22 +35,24 @@ class ReviewsView extends React.Component {
   }
 
   onMouseOverHandler() {
-    this.setState({ hovered: true });
+    if (this.state.hovered === false) {
+      this.setState({ hovered: true });
+    }
   }
 
   render() {
     return (
       <SmallFont>
-        <Stars 
+        <StarsButton 
           one={this.state.one} 
           two={this.state.two} 
           three={this.state.three} 
           four={this.state.four} 
           five={this.state.five} 
           hovered={this.state.hovered} 
-          onMouseOverHandler={this.onMouseOverHandler.bind(this)} 
-          onMouseLeaveHandler={this.onMouseLeaveHandler.bind(this)} />
-        <Link>{this.state.total} customer reviews</Link> | <Link>{this.state.answered_questions} answered questions</Link>
+          onMouseOver={this.onMouseOverHandler} 
+          onMouseLeave={this.onMouseLeaveHandler} />
+        <LeftPaddedLink>{this.state.total} customer reviews</LeftPaddedLink> | <Link>{this.state.answered_questions} answered questions</Link>
         <GrayLine></GrayLine>
       </SmallFont>
     );

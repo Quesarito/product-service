@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import PriceView from './PriceView.jsx';
-import GrayLine from './GrayLine.jsx';
-
-// const primeURL = 
+import GrayLine from '../styledComponents/GrayLine.jsx';
 
 const Description = styled.div`
   font-size: 13px;
 `;
+
 const Paragraph = ({ paragraph }) => (<p>{ paragraph }</p>);
 
 const DescriptionView = ({ price, prime, description}) => (
