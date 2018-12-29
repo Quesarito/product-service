@@ -6,6 +6,10 @@ const tileURL = 'https://images-na.ssl-images-amazon.com/images/G/01/apparel/rcx
 // the tile to appear at (x_0 + 50, y_0 + 50).
 const imageOrigin = [58 + 50, 29 + 50];
 
+const TileAndZoom = styled.div`
+  z-index: 2;
+`;
+
 class Tile extends React.Component {
   constructor(props) {
     super(props);
@@ -28,9 +32,9 @@ class Tile extends React.Component {
 
   getCoordinatesWithinBounds(clientX, clientY) {
     let x = clientX < imageOrigin[0] ? imageOrigin[0] : clientX;
-    x = x > 500 ? 500 : x;
+    x = x > 475 ? 475 : x;
     let y = clientY < imageOrigin[1] ? imageOrigin[1] : clientY;
-    y = y > 500 ? 500 : y;
+    y = y > 475 ? 475 : y;
     return [x, y];
   }
 
@@ -41,25 +45,46 @@ class Tile extends React.Component {
     this.props.changeProductDisplayHoveredState();
   }
 
+  toPixel(a) {
+    return a.toString() + 'px';
+  }
+
   render() {
+    let x = this.state.xCoord;
+    let y = this.state.yCoord;
+
     const tileStyle = {
       position: 'absolute',
       height: 100,
       width: 100,
-      left: this.state.xCoord - 100,
-      top: this.state.yCoord - 50,
+      left: x - 100,
+      top: y - 50,
+    };
+
+    const zoomStyle = {
+      position: 'absolute',
+      height: 300,
+      width: 300,
+      left: 500,
+      top: 50,
+      backgroundSize: 3000,
+      background: `white url(${ this.props.pictureURL }) -${ this.toPixel(x - 100) } -${ this.toPixel(y - 50) } no-repeat`,
+      boxShadow: '1px 1px 2px 1px rgba(100, 100, 100, 0.2)',
+      zIndex: 4,
     };
 
     return (this.state.hovered ? 
-      <img src={ tileURL } style={ tileStyle } 
-        onMouseMove={ this.onMouseMove } onMouseOut={ this.onMouseOut }></img>
+      <TileAndZoom>
+        <img src={ tileURL } style={ tileStyle } 
+          onMouseMove={ this.onMouseMove } onMouseOut={ this.onMouseOut }></img>
+        <div style={ zoomStyle }></div>
+      </TileAndZoom>
       : ''
     );
   }
 };
 
-// {/*...
-        // {/*onMouseLeave={ this.state.onMouseLeave */}
 
+//${ getPixelShift(difference, Number(weighted)) }
 
 export default Tile;
