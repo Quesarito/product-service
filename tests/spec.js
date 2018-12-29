@@ -1,7 +1,7 @@
 import React from 'react';
 import Product from '../client/src/components/Product.jsx';
-import PicturesView from '../client/src/components/PicturesView.jsx';
-import TitleView from '../client/src/components/Titleview.jsx';
+import PicturesView from '../client/src/components/picture/PicturesView.jsx';
+import TitleView from '../client/src/components/content/Titleview.jsx';
 import exampleData from './exampleData.js';
 import { shallow } from 'enzyme';
 
