@@ -26,26 +26,22 @@ class PictureDisplay extends React.Component {
     super(props);
     this.state = {
       hovered: false,
-      tileCenter_Coords: [],
+      tileCenterCoords: [0, 0],
     };
-    this.onMouseOverImg = this.onMouseOverImg.bind(this);
-    this.onMouseLeave = this.onMouseLeave.bind(this);
+    this.onMouseEnter = this.onMouseEnter.bind(this);
+    this.onMouseLeaveImg = this.onMouseLeaveImg.bind(this);
   }
 
-  onMouseOverImg(e) {
+  onMouseEnter(e) {
     if (this.state.hovered === false) {
       this.setState({
         hovered: true,
-        tileCenter_Coords: [e.clientX, e.clientY],
-      });
-    } else {
-      this.setState({
-        tileCenter_Coords: [e.clientX, e.clientY],
+        tileCenterCoords: [e.clientX, e.clientY],
       });
     }
   }
 
-  onMouseLeave() {
+  onMouseLeaveImg() {
     this.setState({
       hovered: false,
     });
@@ -62,10 +58,9 @@ class PictureDisplay extends React.Component {
 
     return  (
       <Picture>
-        <img onMouseOver={ this.onMouseOverImg } onMouseLeave={ this.onMouseLeave } src={ this.props.pictureURL } ></img>
-        { this.state.hovered ?
-          <Tile xCoord={ this.state.tileCenter_Coords[0] } yCoord={ this.state.tileCenter_Coords[1] }
-            onMouseMoveTile={ this.onMouseMoveTile } onMouseLeave={ this.onMouseLeave } />
+        <img onMouseEnter={ this.onMouseEnter } onMouseLeave={ this.onMouseLeaveImg } src={ this.props.pictureURL } ></img>
+        { this.state.hovered && this.state.tileCenterCoords ?
+          <Tile xCoord={ this.state.tileCenterCoords[0] } yCoord={ this.state.tileCenterCoords[1] } changeProductDisplayHoveredState={ this.onMouseLeaveImg } />
           : ''
         }
         <Caption>{ this.state.hovered ? 'Click image to open expanded view' : 'Roll over image to zoom in' }</Caption>
