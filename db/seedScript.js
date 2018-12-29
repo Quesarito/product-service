@@ -12,7 +12,7 @@ const productSchema = new mongoose.Schema({
     unique: true,
   },
   name: String,
-  description: String,
+  description: [String],
   seller: String,
   prime_eligible: Boolean,
   versions: {
