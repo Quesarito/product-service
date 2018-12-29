@@ -25,10 +25,15 @@ class Tile extends React.Component {
 
   onMouseMove(e) {
     let [newXCoord, newYCoord] = this.getCoordsInBounds(e.clientX, e.clientY);
-    this.setState({
-      xCoord: newXCoord,
-      yCoord: newYCoord,
-    });
+
+    if (newXCoord === false || newYCoord === false) {
+      this.props.changeProductDisplayHoveredState();
+    } else {
+      this.setState({
+        xCoord: newXCoord,
+        yCoord: newYCoord,
+      });
+    }
   }
 
   getCoordsInBounds(clientX, clientY) {
@@ -46,29 +51,30 @@ class Tile extends React.Component {
     this.props.changeProductDisplayHoveredState();
   }
 
-  toPixel(a) {
-    return a.toString() + 'px';
+  toPixel(x) {
+    return x.toString() + 'px';
   }
 
   render() {
     let x = this.state.xCoord;
     let y = this.state.yCoord;
 
-    const tileStyle = {
-      position: 'absolute',
-      height: 100,
-      width: 100,
-      left: x - 100,
-      top: y - 50,
-    };
+    // const tileStyle = {
+    //   position: 'absolute',
+    //   height: 100,
+    //   width: 100,
+    //   left: x - 100,
+    //   top: y - 50,
+    //   zIndex: 4,
+    // }; //src={ tileURL } 
 
     const zoomStyle = {
       position: 'absolute',
       height: 500,
-      width: 500,
-      left: 500,
+      width: 400,
+      left: 550,
       top: 5,
-      background: `white url(${ this.props.pictureURL }) -${ this.toPixel(x - 150) } -${ this.toPixel(y - 67.5) } no-repeat`,
+      background: `white url(${ this.props.pictureURL }) -${ this.toPixel(1.5 * (x - 150)) } -${ this.toPixel(1.5 * (y - 67.5)) } no-repeat`,
       backgroundSize: 1000,
       boxShadow: '1px 1px 2px 1px rgba(100, 100, 100, 0.2)',
       zIndex: 5,
@@ -76,16 +82,12 @@ class Tile extends React.Component {
 
     return (this.state.hovered ? 
       <TileAndZoom>
-        <img src={ tileURL } style={ tileStyle } 
-          onMouseMove={ this.onMouseMove } onMouseOut={ this.onMouseOut }></img>
+        <div onMouseMove={ this.onMouseMove } onMouseOut={ this.onMouseOut }></div>
         <div style={ zoomStyle }></div>
       </TileAndZoom>
       : ''
     );
   }
 };
-
-
-//${ getPixelShift(difference, Number(weighted)) }
 
 export default Tile;

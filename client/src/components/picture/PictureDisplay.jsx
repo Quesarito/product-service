@@ -52,10 +52,6 @@ class PictureDisplay extends React.Component {
   }
 
   render() {
-    // the Picture styled component is inside of this PictureDisplay component
-    // because if the entire set of pictures changes (e.g. a new product is
-    // is rendered), then the number of pictures may not be the same, and we want
-    // for the PictureDisplay to be well aligned with the PictureList and Title
     const Picture = styled(PrePicture)`
       margin-top: calc(-1 * ${ this.props.numPictures } * 47.5px);
     `;
