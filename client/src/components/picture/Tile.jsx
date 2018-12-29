@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const tileURL = 'https://images-na.ssl-images-amazon.com/images/G/01/apparel/rcxgs/tile._CB483369105_.gif';
+
 // Images start at (x_0, y_0) = (58, 29), but the tile is 100 x 100 px2. Thus, we want
 // the tile to appear at (x_0 + 50, y_0 + 50).
 const imageOrigin = [58 + 50, 29 + 50];
@@ -23,14 +24,14 @@ class Tile extends React.Component {
   }
 
   onMouseMove(e) {
-    let [newXCoord, newYCoord] = this.getCoordinatesWithinBounds(e.clientX, e.clientY);
+    let [newXCoord, newYCoord] = this.getCoordsInBounds(e.clientX, e.clientY);
     this.setState({
       xCoord: newXCoord,
       yCoord: newYCoord,
     });
   }
 
-  getCoordinatesWithinBounds(clientX, clientY) {
+  getCoordsInBounds(clientX, clientY) {
     let x = clientX < imageOrigin[0] ? imageOrigin[0] : clientX;
     x = x > 475 ? 475 : x;
     let y = clientY < imageOrigin[1] ? imageOrigin[1] : clientY;
@@ -63,14 +64,14 @@ class Tile extends React.Component {
 
     const zoomStyle = {
       position: 'absolute',
-      height: 300,
-      width: 300,
+      height: 500,
+      width: 500,
       left: 500,
-      top: 50,
-      backgroundSize: 3000,
-      background: `white url(${ this.props.pictureURL }) -${ this.toPixel(x - 100) } -${ this.toPixel(y - 50) } no-repeat`,
+      top: 5,
+      background: `white url(${ this.props.pictureURL }) -${ this.toPixel(x - 150) } -${ this.toPixel(y - 67.5) } no-repeat`,
+      backgroundSize: 1000,
       boxShadow: '1px 1px 2px 1px rgba(100, 100, 100, 0.2)',
-      zIndex: 4,
+      zIndex: 5,
     };
 
     return (this.state.hovered ? 

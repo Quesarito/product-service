@@ -28,14 +28,18 @@ class PictureDisplay extends React.Component {
       hovered: false,
       tileCenterCoords: [0, 0],
     };
-    this.onMouseEnter = this.onMouseEnter.bind(this);
+    this.onMouseOver = this.onMouseOver.bind(this);
     this.onMouseLeaveImg = this.onMouseLeaveImg.bind(this);
   }
 
-  onMouseEnter(e) {
+  onMouseOver(e) {
     if (this.state.hovered === false) {
       this.setState({
         hovered: true,
+        tileCenterCoords: [e.clientX, e.clientY],
+      });
+    } else {
+      this.setState({
         tileCenterCoords: [e.clientX, e.clientY],
       });
     }
@@ -58,7 +62,7 @@ class PictureDisplay extends React.Component {
 
     return  (
       <Picture>
-        <img onMouseEnter={ this.onMouseEnter } onMouseLeave={ this.onMouseLeaveImg } src={ this.props.pictureURL } ></img>
+        <img onMouseEnter={ this.onMouseOver } onMouseOver={ this.onMouseOver } onMouseLeave={ this.onMouseLeaveImg } src={ this.props.pictureURL } ></img>
         { this.state.hovered && this.state.tileCenterCoords ?
           <Tile xCoord={ this.state.tileCenterCoords[0] } yCoord={ this.state.tileCenterCoords[1] } 
             changeProductDisplayHoveredState={ this.onMouseLeaveImg } pictureURL={ this.props.pictureURL } />
