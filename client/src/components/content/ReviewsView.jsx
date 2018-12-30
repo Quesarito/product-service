@@ -17,13 +17,6 @@ class ReviewsView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      one: props.one,
-      two: props.two,
-      three: props.three,
-      four: props.four,
-      five: props.five,
-      total: props.total,
-      answered_questions: props.answered_questions,
       hovered: false,
     };
     this.onMouseLeaveHandler = this.onMouseLeaveHandler.bind(this);
@@ -44,15 +37,16 @@ class ReviewsView extends React.Component {
     return (
       <SmallFont>
         <StarsButton 
-          one={this.state.one} 
-          two={this.state.two} 
-          three={this.state.three} 
-          four={this.state.four} 
-          five={this.state.five} 
-          hovered={this.state.hovered} 
-          onMouseOver={this.onMouseOverHandler} 
+          one={this.props.one}
+          two={this.props.two}
+          three={this.props.three}
+          four={this.props.four}
+          five={this.props.five}
+          hovered={this.state.hovered}
+          onMouseOver={this.onMouseOverHandler}
           onMouseLeave={this.onMouseLeaveHandler} />
-        <LeftPaddedLink>{this.state.total} customer reviews</LeftPaddedLink> | <Link>{this.state.answered_questions} answered questions</Link>
+        <LeftPaddedLink>{this.props.one + this.props.two + this.props.three + this.props.four + this.props.five} customer reviews</LeftPaddedLink>
+          &nbsp;| <Link>{this.props.answered_questions} answered questions</Link>
         <GrayLine></GrayLine>
       </SmallFont>
     );

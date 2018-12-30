@@ -40,12 +40,40 @@ class Product extends React.Component {
       three_star_reviews: exampleData.three_star_reviews,
       two_star_reviews: exampleData.two_star_reviews,
       one_star_reviews: exampleData.one_star_reviews,
-      total_reviews: exampleData.total_reviews,
+      total_reviews: exampleData.five_star_reviews + exampleData.four_star_reviews + 
+        exampleData.three_star_reviews + exampleData.two_star_reviews + exampleData.one_star_reviews,
       answered_questions: exampleData.answered_questions,
     };
     // This changes the title of the page (title in the browser tab) to:
     // Amazon.com: Product name
     document.title = `Amazon.com: ${exampleData.name}`;
+  }
+
+  componentDidMount() {
+    fetch(`/api/products?id=${ Math.floor(Math.random() * 100) }`)
+      .then(response => response.json())
+      .then(([product]) => {
+        this.setState({
+          id: product.id,
+          name: product.name,
+          description: product.description,
+          seller: product.seller,
+          prime_eligible: product.prime_eligible,
+          versions: product.versions,
+          image_urls: product.image_urls,
+          expected_date_of_arrival: product.expected_date_of_arrival,
+          five_star_reviews: product.five_star_reviews,
+          four_star_reviews: product.four_star_reviews,
+          three_star_reviews: product.three_star_reviews,
+          two_star_reviews: product.two_star_reviews,
+          one_star_reviews: product.one_star_reviews,
+          total_reviews: product.five_star_reviews + product.four_star_reviews + 
+            product.three_star_reviews + product.two_star_reviews + product.one_star_reviews,
+          answered_questions: product.answered_questions,
+        });
+        document.title = `Amazon.com: ${product.name}`;
+      })
+      .catch('ERROR FETCHING PRODUCT');
   }
 
   render() {
