@@ -53,7 +53,7 @@ class PictureDisplay extends React.Component {
 
   render() {
     const Picture = styled(PrePicture)`
-      margin-top: calc(-1 * ${ this.props.numPictures } * 47.5px);
+      margin-top: calc(-1 * ${ this.props.numPictures } * 55px);
     `;
 
     return  (
