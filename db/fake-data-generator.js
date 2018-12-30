@@ -12,7 +12,7 @@ const getImgUrls = () => {
 
 // Get a random amount of description from faker
 const getDescription = () => {
-  const rand = Math.floor(Math.random() * 5) + 2;
+  const rand = Math.floor(Math.random() * 7);
   const paragraphs = [];
 
   for (let i = 0; i < rand; i += 1) {
@@ -47,11 +47,14 @@ const newProductDocument = id => ({
   },
   image_urls: getImgUrls(),
   expected_date_of_arrival: getFutureDate(),
+  
   five_star_reviews: getRandomReviewQty(),
   four_star_reviews: getRandomReviewQty(),
   three_star_reviews: getRandomReviewQty(),
   two_star_reviews: getRandomReviewQty(),
   one_star_reviews: getRandomReviewQty(),
+  total_reviews: getRandomReviewQty(),
+
   answered_questions: getRandomAnswerQty(),
 });
 
