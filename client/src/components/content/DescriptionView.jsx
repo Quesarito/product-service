@@ -9,11 +9,11 @@ const Description = styled.div`
 
 const Paragraph = ({ paragraph }) => (<p>{ paragraph }</p>);
 
-const DescriptionView = ({ price, prime, description}) => (
+const DescriptionView = ({ price, prime, description }) => (
   <Description>
-    <PriceView price={price} prime={prime} />
+    <PriceView price={ price } prime={ prime } />
     {!prime ? '(Note: This item is not Prime eligible.)' : ''}
-    { description.map((paragraph, i) => <Paragraph key={i} paragraph={paragraph} />) }
+    { description.map((paragraph, key) => <Paragraph key={ key } paragraph={ paragraph } />) }
     <GrayLine></GrayLine>
   </Description>
 );

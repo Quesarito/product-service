@@ -60,7 +60,7 @@ class PictureDisplay extends React.Component {
       <Picture>
         <img onMouseEnter={ this.onMouseOver } onMouseOver={ this.onMouseOver } onMouseLeave={ this.onMouseLeaveImg } src={ this.props.pictureURL } ></img>
         { this.state.hovered && this.state.tileCenterCoords ?
-          <Tile xCoord={ this.state.tileCenterCoords[0] } yCoord={ this.state.tileCenterCoords[1] } 
+          <Tile xCoord={ this.state.tileCenterCoords[0] } yCoord={ this.state.tileCenterCoords[1] }
             changeProductDisplayHoveredState={ this.onMouseLeaveImg } pictureURL={ this.props.pictureURL } />
           : ''
         }
