@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const tileURL = 'https://images-na.ssl-images-amazon.com/images/G/01/apparel/rcxgs/tile._CB483369105_.gif';
-const imageOrigin = [110, 60];
+const minBound = [110, 60];
+const maxBound = [475, 410];
 
 const TileAndZoom = styled.div`
   z-index: 2;
@@ -12,8 +13,8 @@ class Tile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      xCoord: props.xCoord < imageOrigin[0] ? imageOrigin[0] : props.xCoord,
-      yCoord: props.yCoord < imageOrigin[1] ? imageOrigin[1] : props.yCoord,
+      xCoord: Math.max(props.xCoord, minBound[0]),
+      yCoord: Math.max(props.yCoord, minBound[1]),
       hovered: true,
     };
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -34,10 +35,8 @@ class Tile extends React.Component {
   }
 
   getCoordsInBounds(clientX, clientY) {
-    let x = clientX < imageOrigin[0] ? imageOrigin[0] : clientX;
-    x = x > 475 ? 475 : x;
-    let y = clientY < imageOrigin[1] ? imageOrigin[1] : clientY;
-    y = y > 410 ? 410 : y;
+    let x = Math.min(Math.max(clientX, minBound[0]), maxBound[0]);
+    let y = Math.min(Math.max(clientY, minBound[1]), maxBound[1]);
     return [x, y];
   }
 
