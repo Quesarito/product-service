@@ -13,7 +13,7 @@ const DescriptionView = ({ price, prime, description}) => (
   <Description>
     <PriceView price={price} prime={prime} />
     {!prime ? '(Note: This item is not Prime eligible.)' : ''}
-    { description.map(paragraph => <Paragraph paragraph={paragraph} />) }
+    { description.map((paragraph, i) => <Paragraph key={i} paragraph={paragraph} />) }
     <GrayLine></GrayLine>
   </Description>
 );

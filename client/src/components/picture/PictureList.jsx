@@ -12,7 +12,7 @@ const PictureList = ({ pictureURLs, onHover, idSelected }) => (
       return (<PictureIcon 
         url={pictureURL} 
         onHover={onHover} 
-        id={id} 
+        id={id} key={id}
         idSelected={idSelected} />);
       })
     }
