@@ -10,10 +10,10 @@ const PictureList = ({ pictureURLs, onHover, idSelected }) => (
   <LeftAlign>
     { pictureURLs.map((pictureURL, id) => {
       return (<PictureIcon 
-        url={pictureURL} 
-        onHover={onHover} 
-        id={id} 
-        idSelected={idSelected} />);
+        url={ pictureURL } 
+        onHover={ onHover } 
+        id={ id } key={ id }
+        idSelected={ idSelected } />);
       })
     }
   </LeftAlign>

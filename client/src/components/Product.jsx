@@ -5,9 +5,24 @@ import ReviewsView from './content/ReviewsView.jsx';
 import DescriptionView from './content/DescriptionView.jsx';
 import exampleData from '../exampleData.js';
 import styled from 'styled-components';
+import {createGlobalStyle} from 'styled-components';
+import AmazonEmber from '../../styles/AmazonEmber_Rg.ttf';
+import AmazonEmberBold from '../../styles/AmazonEmber_Bd.ttf';
 
-const App = styled.div`
-  font-family: Roboto, Arial, sans-serif;
+const GlobalStyles = createGlobalStyle`
+  @font-face {
+    font-family: 'Amazon Ember';
+    src: url('${AmazonEmber}') format('truetype');
+    font-weight: normal;
+  }
+  @font-face {
+    font-family: 'Amazon Ember';
+    src: url('${AmazonEmberBold}') format('truetype');
+    font-weight: bold;
+  }
+  body {
+    font-family: 'Amazon Ember', Arial, sans-serif;
+  }
 `;
 
 const PicturesSection = styled.div`
@@ -78,8 +93,8 @@ class Product extends React.Component {
 
   render() {
     return (
-      <App>
-
+      <div>
+        <GlobalStyles />
         <PicturesSection>
           <PicturesView pictureURLs={this.state.image_urls} />
         </PicturesSection>
@@ -100,7 +115,7 @@ class Product extends React.Component {
             description={this.state.description} />
         </ContentSection>
 
-      </App>
+      </div>
     );
   }
 }

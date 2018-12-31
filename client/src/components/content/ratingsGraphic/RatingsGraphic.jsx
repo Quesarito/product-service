@@ -67,8 +67,8 @@ const RatingsGraphic = ({ one, two, three, four, five, weighted }) => {
         <FirstRow> 
           { weighted } out of 5 stars 
         </FirstRow>
-        { ratings.map(rating => <RatingsRow starNum={rating[0]} amount={rating[1]} total={total} />)}
-        <LastLink>See all {total} reviews ></LastLink>
+        { ratings.map((rating, key) => <RatingsRow starNum={ rating[0] } amount={ rating[1] } total={ total } key={ key } />) }
+        <LastLink>See all { total } reviews ></LastLink>
       </CenterAlign>
 
     </Box>
