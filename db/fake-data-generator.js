@@ -47,7 +47,7 @@ const newProductDocument = id => ({
   },
   image_urls: getImgUrls(),
   expected_date_of_arrival: getFutureDate(),
-
+  
   five_star_reviews: getRandomReviewQty(),
   four_star_reviews: getRandomReviewQty(),
   three_star_reviews: getRandomReviewQty(),
