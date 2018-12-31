@@ -16,7 +16,8 @@ const PrePicture = styled.div`
     width: auto;
     max-width: 500px;
     height: 460px;
-    max-height: 600px;
+    width: auto;
+    max-width: 450px;
     align-content: center;
   }
 `;
