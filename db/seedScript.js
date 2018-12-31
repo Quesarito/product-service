@@ -12,7 +12,7 @@ const productSchema = new mongoose.Schema({
     unique: true,
   },
   name: String,
-  description: String,
+  description: [String],
   seller: String,
   prime_eligible: Boolean,
   versions: {
@@ -27,15 +27,12 @@ const productSchema = new mongoose.Schema({
   },
   image_urls: [String],
   expected_date_of_arrival: String,
-
   // Number of reviews for each star:
   five_star_reviews: Number, // Eventually fetched from /reviews API
   four_star_reviews: Number,
   three_star_reviews: Number,
   two_star_reviews: Number,
   one_star_reviews: Number,
-  total_reviews: Number,
-
   // Number of answered questions about the product
   answered_questions: Number, // Eventually fetched from /questions API
 });
