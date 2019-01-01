@@ -1,14 +1,19 @@
 // Express Server and Middleware Imports
 const express = require('express');
-const bodyParser = require('body-parser');
+const path = require('path');
 const morgan = require('morgan');
 const db = require('../db/index');
 
 const app = express();
 const port = 3002;
 
-app.use(express.static('public'));
 app.use(morgan('tiny'));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/api/products', (req, res) => {
   db.find(req.query)
