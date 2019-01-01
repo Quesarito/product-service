@@ -11,7 +11,7 @@
     "start": "nodemon --inspect=4002 ./server/index.js",
     "build": "webpack -d --watch",
     "seed": "node db/seedScript.js",
-    "test": "jest --config=jest.config.js"
+    "test": "jest --config=jest.config.js --coverage"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -38,6 +38,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "file-loader": "^3.0.1",
+    "istanbul": "^0.4.5",
     "jest": "^23.6.0",
     "webpack": "^4.28.0",
     "webpack-cli": "^3.1.2"
