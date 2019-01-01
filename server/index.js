@@ -13,7 +13,11 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '../public')));
+
+app.get('/app.js', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/bundle.js'));
+});
 
 app.get('/api/products', (req, res) => {
   db.find(req.query)
