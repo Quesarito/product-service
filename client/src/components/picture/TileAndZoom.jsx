@@ -1,20 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
+import { tileURL } from '../helpers/urls.js';
+import TileAndZoomStyle from '../styledComponents/TileAndZoomStyle.jsx';
 
-const tileURL = 'https://images-na.ssl-images-amazon.com/images/G/01/apparel/rcxgs/tile._CB483369105_.gif';
-const minBound = [110, 60];
-const maxBound = [475, 410];
+const minBoundary = [110, 60];
+const maxBoundary = [475, 410];
 
-const TileAndZoom = styled.div`
-  z-index: 2;
-`;
-
-class Tile extends React.Component {
+class TileAndZoom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      xCoord: Math.max(props.xCoord, minBound[0]),
-      yCoord: Math.max(props.yCoord, minBound[1]),
+      xCoord: Math.max(props.xCoord, minBoundary[0]),
+      yCoord: Math.max(props.yCoord, minBoundary[1]),
       hovered: true,
     };
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -35,8 +31,8 @@ class Tile extends React.Component {
   }
 
   getCoordsInBounds(clientX, clientY) {
-    let x = Math.min(Math.max(clientX, minBound[0]), maxBound[0]);
-    let y = Math.min(Math.max(clientY, minBound[1]), maxBound[1]);
+    const x = Math.min(Math.max(clientX, minBoundary[0]), maxBoundary[0]);
+    const y = Math.min(Math.max(clientY, minBoundary[1]), maxBoundary[1]);
     return [x, y];
   }
 
@@ -52,8 +48,8 @@ class Tile extends React.Component {
   }
 
   render() {
-    let x = this.state.xCoord;
-    let y = this.state.yCoord;
+    const x = this.state.xCoord;
+    const y = this.state.yCoord;
 
     const tileStyle = {
       position: 'absolute',
@@ -79,14 +75,14 @@ class Tile extends React.Component {
     };
 
     return (this.state.hovered ? 
-      <TileAndZoom>
+      <TileAndZoomStyle>
         <img src={ tileURL } style={ tileStyle } 
           onMouseMove={ this.onMouseMove } onMouseOut={ this.onMouseOut }></img>
         <div style={ zoomStyle } onMouseOver={ this.onMouseOut } ></div>
-      </TileAndZoom>
+      </TileAndZoomStyle>
       : ''
     );
   }
 };
 
-export default Tile;
+export default TileAndZoom;

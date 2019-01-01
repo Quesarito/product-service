@@ -1,11 +1,18 @@
+// Importing React
 import React from 'react';
+
+// Importing Styled-Components
+import { createGlobalStyle } from 'styled-components';
+import PicturesSection from './styledComponents/PicturesSection.jsx';
+import ContentSection from './styledComponents/ContentSection.jsx';
+
+// Importing Components
 import PicturesView from './picture/PicturesView.jsx';
 import TitleView from './content/TitleView.jsx';
 import ReviewsView from './content/ReviewsView.jsx';
 import DescriptionView from './content/DescriptionView.jsx';
-import exampleData from '../exampleData.js';
-import styled from 'styled-components';
-import {createGlobalStyle} from 'styled-components';
+
+// Importing Styles (fonts)
 import AmazonEmber from '../../styles/AmazonEmber_Rg.ttf';
 import AmazonEmberBold from '../../styles/AmazonEmber_Bd.ttf';
 
@@ -25,49 +32,39 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const PicturesSection = styled.div`
-  width: 550px;
-  height: 600px; 
-  left: 0px; 
-  float: left;
-`;
-
-const ContentSection = styled.div`
-  display: 'inline-block';
-  margin-left: 550px;
-  margin-right: 200px;
-`;
-
 class Product extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: exampleData.id,
-      name: exampleData.name,
-      description: exampleData.description,
-      seller: exampleData.seller,
-      prime_eligible: exampleData.prime_eligible,
-      versions: exampleData.versions,
-      image_urls: exampleData.image_urls,
-      expected_date_of_arrival: exampleData.expected_date_of_arrival,
-      five_star_reviews: exampleData.five_star_reviews,
-      four_star_reviews: exampleData.four_star_reviews,
-      three_star_reviews: exampleData.three_star_reviews,
-      two_star_reviews: exampleData.two_star_reviews,
-      one_star_reviews: exampleData.one_star_reviews,
-      total_reviews: exampleData.five_star_reviews + exampleData.four_star_reviews + 
-        exampleData.three_star_reviews + exampleData.two_star_reviews + exampleData.one_star_reviews,
-      answered_questions: exampleData.answered_questions,
+      id: 0,
+      name: '',
+      description: [],
+      seller: '',
+      prime_eligible: false,
+      versions: { 
+        new: {
+          price: 0,
+        },
+      },
+      image_urls: [],
+      expected_date_of_arrival: '',
+      five_star_reviews: 0,
+      four_star_reviews: 0,
+      three_star_reviews: 0,
+      two_star_reviews: 0,
+      one_star_reviews: 0,
+      total_reviews: 0,
+      answered_questions: 0,
     };
     // This changes the title of the page (title in the browser tab) to:
     // Amazon.com: Product name
-    document.title = `Amazon.com: ${exampleData.name}`;
+    document.title = `Amazon.com`;
   }
 
   componentDidMount() {
     fetch(`/api/products?id=${ Math.floor(Math.random() * 100) }`)
       .then(response => response.json())
-      .then(([product]) => {
+      .then(([ product ]) => {
         this.setState({
           id: product.id,
           name: product.name,
@@ -95,6 +92,7 @@ class Product extends React.Component {
     return (
       <div>
         <GlobalStyles />
+        
         <PicturesSection>
           <PicturesView pictureURLs={this.state.image_urls} />
         </PicturesSection>
