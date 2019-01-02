@@ -1,17 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import StarsButton from './StarsButton.jsx';
 import GrayLine from '../styledComponents/GrayLine.jsx';
-import Link from '../styledComponents/Link.jsx';
-
-const SmallFont = styled.div`
-  font-size: 13px;
-  line-height: 1.46;
-`;
-
-const LeftPaddedLink = styled(Link)`
-  padding-left: 15px;
-`;
+import { LeftPaddedLink, Link } from '../styledComponents/Link.jsx';
+import ReviewsFont from '../styledComponents/ReviewsFont.jsx';
 
 class ReviewsView extends React.Component {
   constructor(props) {
@@ -35,7 +26,7 @@ class ReviewsView extends React.Component {
 
   render() {
     return (
-      <SmallFont>
+      <ReviewsFont>
         <StarsButton 
           one={this.props.one}
           two={this.props.two}
@@ -48,7 +39,7 @@ class ReviewsView extends React.Component {
         <LeftPaddedLink>{this.props.one + this.props.two + this.props.three + this.props.four + this.props.five} customer reviews</LeftPaddedLink>
           &nbsp;| <Link>{this.props.answered_questions} answered questions</Link>
         <GrayLine></GrayLine>
-      </SmallFont>
+      </ReviewsFont>
     );
   }
 }

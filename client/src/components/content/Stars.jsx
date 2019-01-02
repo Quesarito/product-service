@@ -1,16 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const amazonSprite = 'https://m.media-amazon.com/images/G/01/AUIClients/AmazonUIBaseCSS-sprite_2x-13acd72bb22e0c502de00d0afe21c494871da686._V2_.png';
-
-const StarSpan = styled.span`
-  height: 10px;
-  width: 120px;
-  border: 10px rgba(0, 0, 0, 0) solid;
-  border-bottom: 5px;
-  border-left: 0px;
-  padding-right: 67px;
-`;
+import { amazonSpriteURL } from '../helpers/urls.js';
+import StarSpan from '../styledComponents/StarSpan.jsx';
 
 const getDifference = weighted => Number(weighted) - Math.floor(Number(weighted));
 const toPixel = shift => shift.toString() + 'px';
@@ -40,7 +30,7 @@ const Stars = ({ weighted }) => {
     height: 50,
     width: 10,
     backgroundColor: `white`,
-    backgroundImage: `url(${ amazonSprite })`,
+    backgroundImage: `url(${ amazonSpriteURL })`,
     backgroundPosition: `${ getPixelShift(difference, Number(weighted)) } -326px`,
     backgroundSize: 325,
     backgroundRepeat: 'no-repeat',

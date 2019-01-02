@@ -16,10 +16,10 @@ const StarsButton = ({ one, two, three, four, five, hovered, onMouseLeave, onMou
   const weightedAvgStr = weighted(one, two, three, four, five, total);
   
   return (
-    <div onMouseLeave={onMouseLeave} onMouseOver={onMouseOver} style={floatLeft}>
-      <Stars weighted={weightedAvgStr} />
+    <div onMouseLeave={ onMouseLeave } onMouseOver={ onMouseOver } style={ floatLeft }>
+      <Stars weighted={ weightedAvgStr } />
       { hovered ? 
-        <RatingsGraphic one={one} two={two} three={three} four={four} five={five} weighted={weightedAvgStr} />
+        <RatingsGraphic one={ one } two={ two } three={ three } four={ four } five={ five } weighted={ weightedAvgStr } />
         : ''
       }
     </div>

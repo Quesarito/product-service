@@ -37,6 +37,8 @@ const productSchema = new mongoose.Schema({
 // Products model definition
 const Product = mongoose.model('Product', productSchema);
 
+// Querying the database to find a product according to the specified conditions
+// E.g. find({id: 45}) –> will query the database for a product whose id === 45.
 const find = conditions => Product.find(conditions);
 
 module.exports = {

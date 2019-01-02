@@ -11,4 +11,21 @@ const Link = styled.a`
   }
 `;
 
-export default Link;
+const LeftPaddedLink = styled(Link)`
+  padding-left: 15px;
+`;
+
+const LastLink = styled(Link)`
+  font-size: 12px;
+`;
+
+const RowLink = styled(Link)`
+  padding-right: 5px;
+`;
+
+export {
+  Link,
+  LeftPaddedLink,
+  LastLink,
+  RowLink,
+};

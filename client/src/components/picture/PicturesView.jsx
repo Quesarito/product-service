@@ -13,9 +13,8 @@ class PicturesView extends React.Component {
   }
 
   onIconHoverHandler(event) {
-    let id = event.target.id;
     this.setState({
-      idSelected: Number(id),
+      idSelected: Number(event.target.id),
     });
   }
 
