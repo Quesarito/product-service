@@ -22,10 +22,15 @@ class PicturesView extends React.Component {
     return (
       <div>
         <PictureList 
-          pictureURLs={this.props.pictureURLs} 
-          onHover={this.onIconHoverHandler}
-          idSelected={this.state.idSelected} />
-        <PictureDisplay pictureURL={this.props.pictureURLs[this.state.idSelected]} numPictures={this.props.pictureURLs.length} />
+          pictureURLs={ this.props.pictureURLs }
+          onHover={ this.onIconHoverHandler }
+          idSelected={ this.state.idSelected } />
+        <PictureDisplay
+          pictureURLs={ this.props.pictureURLs }
+          pictureURL={ this.props.pictureURLs[this.state.idSelected] }
+          numPictures={ this.props.pictureURLs.length }
+          idSelected={ this.state.idSelected }
+          name={ this.props.name } />
       </div>
     );
   }
