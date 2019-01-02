@@ -15,6 +15,7 @@ class TileAndZoom extends React.Component {
     };
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseOut = this.onMouseOut.bind(this);
+    this.onTileClick = this.onTileClick.bind(this);
   }
 
   onMouseMove(e) {
@@ -41,6 +42,10 @@ class TileAndZoom extends React.Component {
       hovered: false,
     })
     this.props.changeProductDisplayHoveredState();
+  }
+
+  onTileClick() {
+    this.props.displayPictureModal();
   }
 
   toPixel(x) {
@@ -76,8 +81,8 @@ class TileAndZoom extends React.Component {
 
     return (this.state.hovered ? 
       <TileAndZoomStyle>
-        <img src={ tileURL } style={ tileStyle } 
-          onMouseMove={ this.onMouseMove } onMouseOut={ this.onMouseOut }></img>
+        <img src={ tileURL } style={ tileStyle } onMouseMove={ this.onMouseMove }
+          onMouseOut={ this.onMouseOut } onClick={ this.onTileClick }></img>
         <div style={ zoomStyle } onMouseOver={ this.onMouseOut } ></div>
       </TileAndZoomStyle>
       : ''
