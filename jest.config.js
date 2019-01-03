@@ -21,6 +21,7 @@ module.exports = {
   ],
   setupFiles: [
     '<rootDir>/tests/setup.js',
+    '<rootDir>/tests/__mocks__/globalMocks.js',
   ],
   testEnvironment: 'node',
   testURL: 'http://localhost:3002/',

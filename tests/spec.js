@@ -12,12 +12,24 @@ describe('Product Component', () => {
     ProductComponent = shallow(<Product />);
   });
 
-  it('has all properties it\'s instantiated with', () => {
+  it('has stubs for all of its state properties when first initialized', () => {
     const productState = ProductComponent.state();
-    const keys = Object.keys(productState);
-    keys.forEach(key => {
-      expect(productState[key]).toEqual(exampleData[key]);
-    });
+    expect(productState.id).toEqual(0);
+    expect(productState.name).toEqual('');
+    expect(Array.isArray(productState.description)).toEqual(true);
+    expect(productState.seller).toEqual('');
+    expect(productState.prime_eligible).toEqual(false);
+    expect(typeof productState.versions === 'object').toBe(true);
+    expect(productState.versions.new.price).toEqual(0);
+    expect(Array.isArray(productState.image_urls)).toEqual(true);
+    expect(productState.expected_date_of_arrival).toEqual('');
+    expect(productState.five_star_reviews).toEqual(0);
+    expect(productState.four_star_reviews).toEqual(0);
+    expect(productState.three_star_reviews).toEqual(0);
+    expect(productState.two_star_reviews).toEqual(0);
+    expect(productState.one_star_reviews).toEqual(0);
+    expect(productState.total_reviews).toEqual(0);
+    expect(productState.answered_questions).toEqual(0);
   });
 
   it('renders the App styled component', () => {
@@ -39,24 +51,18 @@ describe('PicturesView Component', () => {
   let PicturesViewComponent;
 
   beforeEach(() => {
-    PicturesViewComponent = shallow(
-      <PicturesView pictureURLs={exampleData.image_urls} />
-    );
+    PicturesViewComponent = shallow(<PicturesView pictureURLs={ exampleData.image_urls } name={ exampleData.name } />);
   });
 
-  it('has three stateful properties', () => {
+  it('has one stateful property: \'idSelected\'', () => {
     const picturesViewState = PicturesViewComponent.state();
     const keys = Object.keys(picturesViewState);
-    expect(keys.length).toEqual(3);
+    expect(keys.length).toEqual(1);
+    expect(picturesViewState.idSelected).toEqual(0);
   });
 
-  it('has an array of image urls', () => {
-    const picturesViewState = PicturesViewComponent.state();
-    expect(Array.isArray(picturesViewState.pictures)).toEqual(true);
-    expect(picturesViewState.pictures.length > 1).toEqual(true);
-    for (let i = 0; i < picturesViewState.pictures.length; i += 1) {
-      expect(picturesViewState.pictures[i]).toContain('https://');
-    }
+  it('contains two children components: \'PictureDisplay\' and \'PictureList\'', () => {
+    expect(PicturesViewComponent.props().children.length).toEqual(2);
   });
 
   it('renders the PictureList and PictureDisplay components', () => {
@@ -66,6 +72,20 @@ describe('PicturesView Component', () => {
     expect(PictureDisplayC).toBeTruthy();
   });
 
+  it('passes an array of \'pictureURLs\', an \'onHover\' function and an \'isSelected\' id to PictureList', () => {
+    const PictureListC = PicturesViewComponent.find('PictureList');
+    expect(Array.isArray(PictureListC.props().pictureURLs)).toEqual(true);
+    expect(typeof PictureListC.props().onHover).toEqual('function');
+    expect(PictureListC.props().idSelected).toEqual(0);
+  });
+
+  it('passes an array of \'pictureURLs\', an \'onHover\' function and an \'isSelected\' id to PictureDisplay', () => {
+    const PictureDisplayC = PicturesViewComponent.find('PictureDisplay');
+    expect(Array.isArray(PictureDisplayC.props().pictureURLs)).toEqual(true);
+    expect(typeof PictureDisplayC.props().pictureURL).toEqual('string');
+    expect(PictureDisplayC.props().idSelected).toEqual(0);
+    expect(PictureDisplayC.props().name).toEqual('Incredible Concrete Towels');
+  })
 });
 
 describe('TitleView Component', () => {
