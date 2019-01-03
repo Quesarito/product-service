@@ -94,7 +94,7 @@ class Product extends React.Component {
         <GlobalStyles />
         
         <PicturesSection>
-          <PicturesView pictureURLs={this.state.image_urls} />
+          <PicturesView pictureURLs={this.state.image_urls} name={this.state.name} />
         </PicturesSection>
 
         <ContentSection>
