@@ -85,7 +85,7 @@ class Product extends React.Component {
         });
         document.title = `Amazon.com: ${product.name}`;
       })
-      .catch('ERROR FETCHING PRODUCT');
+      .catch(() => console.log('ERROR FETCHING PRODUCT'));
   }
 
   render() {
