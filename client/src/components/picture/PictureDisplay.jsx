@@ -64,7 +64,7 @@ class PictureDisplay extends React.Component {
         { this.state.hovered && this.state.tileCenterCoords ?
           <TileAndZoom xCoord={ this.state.tileCenterCoords[0] } yCoord={ this.state.tileCenterCoords[1] }
             changeProductDisplayHoveredState={ this.onMouseLeaveImg } pictureURL={ this.props.pictureURL }
-            displayPictureModal={ this.displayPictureModal } />
+            displayPictureModal={ this.displayPictureModal } numPictures={ this.props.numPictures } />
           : ''
         }
         { this.state.clicked ?

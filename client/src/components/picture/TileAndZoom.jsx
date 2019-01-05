@@ -61,7 +61,7 @@ class TileAndZoom extends React.Component {
       height: 125,
       width: 100,
       left: x - 100,
-      top: y - 67.5,
+      top: y,
     };
 
     const zoomStyle = {
@@ -69,7 +69,7 @@ class TileAndZoom extends React.Component {
       height: 500,
       width: 400,
       left: 550,
-      top: 5,
+      marginTop: -464,
       backgroundColor: 'white',
       backgroundImage: `url(${ this.props.pictureURL })`,
       backgroundPosition: `-${ this.toPixel(1.5 * (x - 150)) } -${ this.toPixel(1.5 * (y - 67.5)) }`,
