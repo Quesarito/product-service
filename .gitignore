@@ -25,3 +25,5 @@ build/
 dist/
 public/bundle.js
 public/*.ttf
+
+mockdata.csv
