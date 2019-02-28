@@ -10,7 +10,6 @@ There are myriad event handlers that display both textual, numerical and visual 
   - [Navigation Bar](https://github.com/Accurate-e-Tail/vrtobar-service)
   - [Product Reviews](https://github.com/Quesarito/reviews-service)
   - [Product Related Items](https://github.com/Quesarito/related-items-service)
-  - [Checkout Service](https://github.com/Quesarito/Checkout-service)
 
 
 ## Requirements
