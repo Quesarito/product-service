@@ -19,4 +19,4 @@ See package.json file for details.
 
 ## About Anazom
 
-> Anazom is an e-commerce platform for online shopping of items. It is a project started in December 2018 meant to mimic the behavior of other e-commerce platforms. It doesn't really sell anything, rather it was used for practice for a project of frontend development.
+> Anazom is an e-commerce platform for online shopping of items. It is a project started in December 2018 meant to mimic the frontend behavior of other e-commerce platforms. It doesn't really sell anything, rather it was used for practice for a project of frontend development.
