@@ -19,6 +19,11 @@ app.get('/app.js', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/bundle.js'));
 });
 
+app.get('/:id', (req, res) => {
+  db.find(req.params)
+    .then(products => res.status(202).send(products));
+});
+
 app.get('/api/products', (req, res) => {
   db.find(req.query)
     .then(products => res.status(202).send(products));
