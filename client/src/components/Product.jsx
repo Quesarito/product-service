@@ -58,7 +58,7 @@ class Product extends React.Component {
     };
     // This changes the title of the page (title in the browser tab) to:
     // Amazon.com: Product name
-    document.title = `Amazon.com`;
+    document.title = `Anazom.com`;
   }
 
   componentDidMount() {
@@ -83,7 +83,7 @@ class Product extends React.Component {
             product.three_star_reviews + product.two_star_reviews + product.one_star_reviews,
           answered_questions: product.answered_questions,
         });
-        document.title = `Amazon.com: ${product.name}`;
+        document.title = `Anazom.com: ${product.name}`;
       })
       .catch(() => console.log('ERROR FETCHING PRODUCT'));
   }

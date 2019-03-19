@@ -5,6 +5,25 @@ Anazom's Product Details Microservice is the frontend component that renders det
 There are myriad event handlers that display both textual, numerical and visual data to the user, both static and dynamic. There are reviews ratings numerical values, several animations, magnification functions, etc. in the product details component.
 
 
+
+Product Details Microservice Main<br />
+<img src="/screenshots/01-Product-Service.png" alt="Product Details Microservice being rendered locally in Chrome." width="400px" height="296px">
+<br />
+
+Carousel highlights and renders different image on hover:
+<img src="/screenshots/02-Product-Service.png" alt="Image carousel to the left will change according to hovered image." width="400px" height="296px">
+<br />
+
+Hovering over Reviews Stars renders an animated weighted Ratings Graphic:
+<img src="/screenshots/03-Reviews-Stars-Graphics.png" alt="Hovering over Reviews Stars renders an animated Ratings Graphic." width="400px" height="296px">
+<br />
+
+Hovering over image renders a Magnified Image:
+<img src="/screenshots/04-Hover-Over-Magnification.png" alt="Hovering over image renders a Magnified Image." width="400px" height="296px">
+<br />
+
+
+
 ## Related Microservices
 
   - [Navigation Bar](https://github.com/Accurate-e-Tail/vrtobar-service)
