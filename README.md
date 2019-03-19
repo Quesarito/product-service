@@ -6,19 +6,19 @@ There are myriad event handlers that display both textual, numerical and visual 
 
 
 
-Product Details Microservice Main:<br />
+### Product Details Microservice Main:<br />
 <img src="/screenshots/01-Product-Service.png" alt="Product Details Microservice being rendered locally in Chrome." width="500px" height="370px">
 <br />
 
-Carousel highlights and renders different image on hover:<br />
+### Carousel highlights and renders different image on hover:<br />
 <img src="/screenshots/02-Product-Service.png" alt="Image carousel to the left will change according to hovered image." width="500px" height="370px">
 <br />
 
-Hovering over Reviews Stars renders an animated weighted Ratings Graphic:<br />
+### Hovering over Reviews Stars renders an animated weighted Ratings Graphic:<br />
 <img src="/screenshots/03-Reviews-Stars-Graphics.png" alt="Hovering over Reviews Stars renders an animated Ratings Graphic." width="500px" height="370px">
 <br />
 
-Hovering over image renders a Magnified Image:<br />
+### Hovering over image renders a Magnified Image:<br />
 <img src="/screenshots/04-Hover-Over-Magnification.png" alt="Hovering over image renders a Magnified Image." width="500px" height="370px">
 <br />
 
